@@ -214,7 +214,7 @@ if(.Machine$sizeof.pointer == 8){
   BF_rem <- BF(x = fit, hypothesis = hyp)
   test_that("BF.rem.dyad four hypotheses correctly evaluated", {
     expect_equivalent(
-      BF_rem$PHP_confirmatory,c(0.000,0.484,0.036, 0.481,0.000), tolerance = .01
+      BF_rem$PHP_confirmatory,c(0.000,0.715,0.063,0.222,0.000), tolerance = .01
     )
   })
 }
