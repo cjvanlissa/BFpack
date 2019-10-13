@@ -198,6 +198,7 @@ fit <- relevent::rem.dyad(edgelist = structure(list(time = c(2652L, 5641L, 10716
                                                               0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L,
                                                               0L, 0L, 0L, 1L, 0L, 1L), .Dim = c(3L, 25L, 25L))), hessian = TRUE,
                           fit.method = "BPM")
+
 # Set effect names
 names(fit$coef) <- c("division", "hierarchy", "building")
 # Define the hypotheses
@@ -209,11 +210,17 @@ hyp <- "division = hierarchy = building;
 set.seed(8389)
 
 # check results
-if(FALSE){
+if(.Machine$sizeof.pointer == 8){
   BF_rem <- BF(x = fit, hypothesis = hyp)
   test_that("BF.rem.dyad four hypotheses correctly evaluated", {
     expect_equivalent(
-      BF_rem$PHP_confirmatory,c(0.000,0.715,0.063,0.222,0.000), tolerance = .01
+      BF_rem$PHP_confirmatory,c(0.000,0.484,0.036, 0.481,0.000), tolerance = .01
     )
+  })
+}
+
+if(.Machine$sizeof.pointer == 4){
+  test_that("BF.rem.dyad gives error in 32 bit", {
+    expect_error(BF(x = fit_32, hypothesis = hyp))
   })
 }

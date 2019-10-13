@@ -2,4 +2,4 @@
 ^\.Rproj\.user$
 dev/
 ^\.travis\.yml$
-errordump.RData
+^.*.RData$
