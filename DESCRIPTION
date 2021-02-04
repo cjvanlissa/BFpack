@@ -1,8 +1,8 @@
 Package: BFpack
 Type: Package
 Title: Flexible Bayes Factor Testing of Scientific Expectations
-Version: 0.3.1
-Date: 2020-10-16
+Version: 0.3.2
+Date: 2021-02-01
 Authors@R: 
     c(person(given = c("Joris"),
              family = "Mulder",
@@ -12,6 +12,10 @@ Authors@R:
              family = "van Lissa",
              role = c("aut", "ctb"),
              email = "c.j.vanlissa@uu.nl"),
+      person(given = "Donald R.",
+             family = "Williams",
+             role = c("aut", "ctb"),
+             email = "drwwilliams@ucdavis.edu"),
       person(given = "Xin",
              family = "Gu",
              role = "aut",
@@ -24,10 +28,6 @@ Authors@R:
              family = "Boeing-Messing",
              role = c("aut", "ctb"),
              email = "F.Boeing-Messing@uvt.nl"),
-      person(given = "Donald R.",
-             family = "Williams",
-             role = c("aut", "ctb"),
-             email = "drwwilliams@ucdavis.edu"),
       person(given = "Jean-Paul",
              family = "Fox",
              role = c("aut", "ctb"),
@@ -36,6 +36,10 @@ Authors@R:
              family = "Menke",
              role = c("ctb"),
              email = "janosch.menke@uni-muenster.de"),
+      person(given = "Robbie",
+             family = "van Aert",
+             role = c("ctb"),
+             email = "R.C.M.vanAert@tilburguniversity.edu"),
       person(given = "Barry",
              family = "Brown",
              role = "ctb"),
@@ -87,9 +91,9 @@ Description: Implementation of various default Bayes factors
     generalized linear models, special cases of 
     linear mixed models, survival models, relational
     event models. Parameters that can be tested are
-    location parameters (e.g., regression coefficients),
+    location parameters (e.g., group means, regression coefficients),
     variances (e.g., group variances), and measures of 
-    association (e.g,. bivariate correlations).
+    association (e.g,. bivariate correlations), among others.
     The statistical underpinnings are
     described in 
     Mulder, Hoijtink, and Xin (2019) <arXiv:1904.00679>,

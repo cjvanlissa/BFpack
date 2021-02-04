@@ -190,7 +190,7 @@ because the same Bayes factor is used when running `BF` on an object of class `g
 
 You can cite the package and the paper using the following reference
 
-> 	Mulder, J., van Lissa, C., Gu, X., Olsson-Collentine, A., Boeing-Messing, F., Williams, D. R., Fox, J.-P., Menke, J., et al. (2019). BFpack: Flexible Bayes Factor Testing of Scientific Expectations. (Version 0.2.1) [R package]. https://CRAN.R-project.org/package=BFpack
+> 	Mulder, J., van Lissa, C., Gu, X., Olsson-Collentine, A., Boeing-Messing, F., Williams, D. R., Fox, J.-P., Menke, J., et al. (2020). BFpack: Flexible Bayes Factor Testing of Scientific Expectations. (Version 0.3.1) [R package]. https://CRAN.R-project.org/package=BFpack
 
 > Mulder, J., Williams, D. R., Gu, X., Olsson-Collentine, A., Tomarken, A., Böing-Messing, F., Hoijtink, H., . . . van Lissa, C. (2019). BFpack: Flexible Bayes factor testing of scientific theories in R. Retrieved from https://arxiv.org/abs/1911.07728
 
@@ -202,5 +202,5 @@ If you have ideas, please get involved. You can contribute by opening an issue o
 * File a GitHub issue [here](https://github.com/jomulder/BFpack)
 * Make a pull request [here](https://github.com/jomulder/BFpack/pulls)
 
-By participating in this project, you agree to abide by the [Contributor Code of Conduct v2.0](code_of_conduct.md).
+By participating in this project, you agree to abide by the Contributor Code of Conduct v2.0.
 

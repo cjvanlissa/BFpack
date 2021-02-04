@@ -8,7 +8,7 @@
 #' @export
 BF.lmerMod <- function(x,
                            hypothesis = NULL,
-                           prior = NULL,
+                           prior.hyp = NULL,
                            complement = TRUE,
                            ...){
 
@@ -291,21 +291,21 @@ BF.lmerMod <- function(x,
     BFmatrix_confirmatory_icc <- round(exp(logBFmatrix),3)
     BFta_confirmatory_icc <- exp(output_marglike_icc[,5] - max(output_marglike_icc[,5]))
     # Change prior probs in case of default setting
-    if(is.null(prior)){
+    if(is.null(prior.hyp)){
       priorprobs <- rep(1/length(BFtu_confirmatory_icc),length(BFtu_confirmatory_icc))
     }else{
-      if(!is.numeric(prior) || length(prior)!=length(BFtu_confirmatory_icc)){
-        warning(paste0("Argument 'prior' should be numeric and of length ",as.character(length(BFtu_confirmatory_icc)),". Equal prior probabilities are used."))
+      if(!is.numeric(prior.hyp) || length(prior.hyp)!=length(BFtu_confirmatory_icc)){
+        warning(paste0("Argument 'prior.hyp' should be numeric and of length ",as.character(length(BFtu_confirmatory_icc)),". Equal prior probabilities are used."))
         priorprobs <- rep(1/length(BFtu_confirmatory_icc),length(BFtu_confirmatory_icc))
       }else{
-        priorprobs <- prior
+        priorprobs <- prior.hyp
       }
     }
     PHP_confirmatory_icc <- priorprobs*BFta_confirmatory_icc / sum(priorprobs*BFta_confirmatory_icc)
     BFtable <- cbind(relcomp,relfit,BF_E,relfit[,2]/relcomp[,2],
                      BF_E*relfit[,2]/relcomp[,2],PHP_confirmatory_icc)
     row.names(BFtable) <- names(PHP_confirmatory_icc)
-    colnames(BFtable) <- c("comp_E","comp_O","fit_E","fit_O","BF_E","BF_O","BF","PHP")
+    colnames(BFtable) <- c("complex=","complex>","fit=","fit>","BF=","BF>","BF","PHP")
     hypotheses <- names(BFta_confirmatory_icc)
 
   }else{
@@ -319,11 +319,11 @@ BF.lmerMod <- function(x,
     PHP_confirmatory=PHP_confirmatory_icc,
     BFmatrix_confirmatory=BFmatrix_confirmatory_icc,
     BFtable_confirmatory=BFtable,
-    prior=priorprobs,
+    prior.hyp=priorprobs,
     hypotheses=hypotheses,
     estimates=postestimates,
     model=x,
-    bayesfactor="Bayes factor based on uniform priors",
+    bayesfactor="Bayes factors based on uniform priors",
     parameter="intraclass correlations",
     call=match.call())
 
@@ -383,7 +383,7 @@ MargLikeICC_Hq <- function(rhoML,zW,ngroups,pvec,samsize1=5e4,samsize2=5e4,
   tzz2 <- sum(zvec2**2)
 
   if(sum(unique1)==0){ #null model with no random effects
-    marglike <- int_lhood(rhoS=rep(0,length=numcat),ngroups,pvec,N,K,Wmat1,zvec1,tWW2,tWz2,tzz2) +
+    marglikeHstar <- int_lhood(rhoS=rep(0,length=numcat),ngroups,pvec,N,K,Wmat1,zvec1,tWW2,tWz2,tzz2) +
       lgamma((N-K)/2) - (N-K)/2*log(pi)
     postprobpositive <- priorprobpositive <- postestimates <- postdraws <- drawsMat <- NULL
     priorprob <- postprob <- 1
